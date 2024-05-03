@@ -15,11 +15,11 @@
  */
 package org.raml.v2.internal.impl.v10.nodes.factory;
 
+import org.raml.v2.internal.impl.commons.nodes.TypeDeclarationNode;
 import org.raml.yagi.framework.grammar.rule.NodeFactory;
 import org.raml.yagi.framework.nodes.KeyValueNodeImpl;
-import org.raml.yagi.framework.nodes.StringNodeImpl;
-import org.raml.v2.internal.impl.commons.nodes.TypeDeclarationNode;
 import org.raml.yagi.framework.nodes.Node;
+import org.raml.yagi.framework.nodes.StringNodeImpl;
 
 import javax.annotation.Nonnull;
 

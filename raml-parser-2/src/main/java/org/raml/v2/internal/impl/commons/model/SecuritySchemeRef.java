@@ -18,7 +18,6 @@ package org.raml.v2.internal.impl.commons.model;
 import org.raml.v2.internal.impl.commons.nodes.BaseSecuritySchemeRefNode;
 import org.raml.v2.internal.impl.commons.nodes.SecuritySchemeNode;
 import org.raml.yagi.framework.model.AbstractNodeModel;
-import org.raml.yagi.framework.model.NodeModel;
 import org.raml.yagi.framework.nodes.Node;
 
 public class SecuritySchemeRef extends AbstractNodeModel<BaseSecuritySchemeRefNode>

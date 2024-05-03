@@ -18,12 +18,7 @@ package org.raml.v2.internal.impl.v10.phase;
 import org.raml.v2.internal.impl.commons.nodes.ResourceNode;
 import org.raml.v2.internal.impl.v10.nodes.NativeTypeExpressionNode;
 import org.raml.v2.internal.impl.v10.nodes.PropertyNode;
-import org.raml.yagi.framework.nodes.KeyValueNode;
-import org.raml.yagi.framework.nodes.KeyValueNodeImpl;
-import org.raml.yagi.framework.nodes.Node;
-import org.raml.yagi.framework.nodes.ObjectNodeImpl;
-import org.raml.yagi.framework.nodes.SimpleTypeNode;
-import org.raml.yagi.framework.nodes.StringNodeImpl;
+import org.raml.yagi.framework.nodes.*;
 import org.raml.yagi.framework.phase.Transformer;
 import org.raml.yagi.framework.util.NodeSelector;
 

@@ -16,7 +16,6 @@
 package org.raml.v2.internal.impl.commons.model;
 
 import org.raml.yagi.framework.model.AbstractNodeModel;
-import org.raml.yagi.framework.model.NodeModel;
 import org.raml.yagi.framework.nodes.Node;
 import org.raml.yagi.framework.nodes.SimpleTypeNode;
 

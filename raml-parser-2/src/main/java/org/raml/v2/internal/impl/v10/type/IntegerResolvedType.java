@@ -15,8 +15,6 @@
  */
 package org.raml.v2.internal.impl.v10.type;
 
-import javax.annotation.Nullable;
-
 import org.raml.v2.internal.impl.commons.nodes.TypeDeclarationNode;
 import org.raml.v2.internal.impl.commons.nodes.TypeExpressionNode;
 import org.raml.v2.internal.impl.commons.rule.RamlErrorNodeFactory;
@@ -25,6 +23,8 @@ import org.raml.v2.internal.impl.v10.grammar.Raml10Grammar;
 import org.raml.v2.internal.impl.v10.rules.TypesUtils;
 import org.raml.yagi.framework.grammar.rule.AnyOfRule;
 import org.raml.yagi.framework.nodes.ErrorNode;
+
+import javax.annotation.Nullable;
 
 public class IntegerResolvedType extends NumberResolvedType
 {

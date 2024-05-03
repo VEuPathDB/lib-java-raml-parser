@@ -15,10 +15,11 @@
  */
 package org.raml.v2.api.model.v10.methods;
 
-import java.util.List;
 import org.raml.v2.api.model.v10.bodies.Response;
 import org.raml.v2.api.model.v10.common.Annotable;
 import org.raml.v2.api.model.v10.datamodel.TypeDeclaration;
+
+import java.util.List;
 
 
 public interface Operation extends Annotable

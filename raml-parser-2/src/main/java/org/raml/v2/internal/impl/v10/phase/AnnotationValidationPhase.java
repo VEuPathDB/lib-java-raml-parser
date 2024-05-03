@@ -17,15 +17,15 @@ package org.raml.v2.internal.impl.v10.phase;
 
 import org.raml.v2.api.loader.ResourceLoader;
 import org.raml.v2.api.model.v10.declarations.AnnotationTarget;
+import org.raml.v2.internal.impl.commons.nodes.AnnotationNode;
+import org.raml.v2.internal.impl.commons.nodes.AnnotationTypeNode;
+import org.raml.v2.internal.impl.commons.nodes.TypeDeclarationNode;
 import org.raml.v2.internal.impl.commons.rule.RamlErrorNodeFactory;
+import org.raml.v2.internal.impl.v10.type.TypeToRuleVisitor;
 import org.raml.yagi.framework.grammar.rule.ErrorNodeFactory;
 import org.raml.yagi.framework.grammar.rule.Rule;
 import org.raml.yagi.framework.nodes.Node;
 import org.raml.yagi.framework.phase.Phase;
-import org.raml.v2.internal.impl.commons.nodes.AnnotationNode;
-import org.raml.v2.internal.impl.commons.nodes.AnnotationTypeNode;
-import org.raml.v2.internal.impl.v10.type.TypeToRuleVisitor;
-import org.raml.v2.internal.impl.commons.nodes.TypeDeclarationNode;
 
 import java.util.List;
 

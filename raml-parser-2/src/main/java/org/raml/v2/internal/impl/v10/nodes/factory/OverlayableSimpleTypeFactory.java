@@ -15,19 +15,14 @@
  */
 package org.raml.v2.internal.impl.v10.nodes.factory;
 
-import javax.annotation.Nonnull;
-
-import org.raml.v2.internal.impl.commons.nodes.StringTemplateNode;
-import org.raml.yagi.framework.grammar.rule.NodeFactory;
-import org.raml.yagi.framework.nodes.AbstractObjectNode;
-import org.raml.yagi.framework.nodes.KeyValueNodeImpl;
-import org.raml.yagi.framework.nodes.Node;
-import org.raml.yagi.framework.nodes.SimpleTypeNode;
-import org.raml.yagi.framework.nodes.StringNodeImpl;
-import org.raml.yagi.framework.nodes.ObjectNodeImpl;
 import org.raml.v2.internal.impl.commons.nodes.OverlayableNode;
 import org.raml.v2.internal.impl.commons.nodes.OverlayableObjectNodeImpl;
 import org.raml.v2.internal.impl.commons.nodes.OverlayableStringNode;
+import org.raml.v2.internal.impl.commons.nodes.StringTemplateNode;
+import org.raml.yagi.framework.grammar.rule.NodeFactory;
+import org.raml.yagi.framework.nodes.*;
+
+import javax.annotation.Nonnull;
 
 
 public class OverlayableSimpleTypeFactory implements NodeFactory

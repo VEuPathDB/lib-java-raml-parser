@@ -15,15 +15,15 @@
  */
 package org.raml.v2.api.model.v10.api;
 
-import java.util.List;
-
 import org.raml.v2.api.model.v10.bodies.MimeType;
 import org.raml.v2.api.model.v10.datamodel.TypeDeclaration;
 import org.raml.v2.api.model.v10.resources.Resource;
 import org.raml.v2.api.model.v10.security.SecuritySchemeRef;
+import org.raml.v2.api.model.v10.system.types.AnnotableStringType;
 import org.raml.v2.api.model.v10.system.types.FullUriTemplateString;
 import org.raml.v2.api.model.v10.system.types.MarkdownString;
-import org.raml.v2.api.model.v10.system.types.AnnotableStringType;
+
+import java.util.List;
 
 
 public interface Api extends LibraryBase

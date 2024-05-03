@@ -15,47 +15,17 @@
  */
 package org.raml.v2.internal.impl.commons.model.factory;
 
+import org.raml.v2.internal.impl.commons.model.type.*;
+import org.raml.v2.internal.impl.commons.nodes.TypeDeclarationNode;
 import org.raml.v2.internal.impl.commons.nodes.TypeExpressionNode;
+import org.raml.v2.internal.impl.commons.type.JsonSchemaExternalType;
+import org.raml.v2.internal.impl.commons.type.ResolvedType;
+import org.raml.v2.internal.impl.commons.type.XmlSchemaExternalType;
+import org.raml.v2.internal.impl.v10.type.*;
 import org.raml.yagi.framework.model.NodeModelFactory;
 import org.raml.yagi.framework.nodes.KeyValueNode;
 import org.raml.yagi.framework.nodes.KeyValueNodeImpl;
 import org.raml.yagi.framework.nodes.Node;
-import org.raml.v2.internal.impl.commons.model.type.AnyTypeDeclaration;
-import org.raml.v2.internal.impl.commons.model.type.ArrayTypeDeclaration;
-import org.raml.v2.internal.impl.commons.model.type.BooleanTypeDeclaration;
-import org.raml.v2.internal.impl.commons.model.type.DateTimeOnlyTypeDeclaration;
-import org.raml.v2.internal.impl.commons.model.type.DateTimeTypeDeclaration;
-import org.raml.v2.internal.impl.commons.model.type.DateTypeDeclaration;
-import org.raml.v2.internal.impl.commons.model.type.FileTypeDeclaration;
-import org.raml.v2.internal.impl.commons.model.type.IntegerTypeDeclaration;
-import org.raml.v2.internal.impl.commons.model.type.JSONTypeDeclaration;
-import org.raml.v2.internal.impl.commons.model.type.NullTypeDeclaration;
-import org.raml.v2.internal.impl.commons.model.type.NumberTypeDeclaration;
-import org.raml.v2.internal.impl.commons.model.type.ObjectTypeDeclaration;
-import org.raml.v2.internal.impl.commons.model.type.StringTypeDeclaration;
-import org.raml.v2.internal.impl.commons.model.type.TimeOnlyTypeDeclaration;
-import org.raml.v2.internal.impl.commons.model.type.TypeDeclaration;
-import org.raml.v2.internal.impl.commons.model.type.UnionTypeDeclaration;
-import org.raml.v2.internal.impl.commons.model.type.XMLTypeDeclaration;
-import org.raml.v2.internal.impl.commons.nodes.TypeDeclarationNode;
-import org.raml.v2.internal.impl.commons.type.JsonSchemaExternalType;
-import org.raml.v2.internal.impl.commons.type.ResolvedType;
-import org.raml.v2.internal.impl.commons.type.XmlSchemaExternalType;
-import org.raml.v2.internal.impl.v10.type.AnyResolvedType;
-import org.raml.v2.internal.impl.v10.type.ArrayResolvedType;
-import org.raml.v2.internal.impl.v10.type.BooleanResolvedType;
-import org.raml.v2.internal.impl.v10.type.DateOnlyResolvedType;
-import org.raml.v2.internal.impl.v10.type.DateTimeOnlyResolvedType;
-import org.raml.v2.internal.impl.v10.type.DateTimeResolvedType;
-import org.raml.v2.internal.impl.v10.type.FileResolvedType;
-import org.raml.v2.internal.impl.v10.type.IntegerResolvedType;
-import org.raml.v2.internal.impl.v10.type.NullResolvedType;
-import org.raml.v2.internal.impl.v10.type.NumberResolvedType;
-import org.raml.v2.internal.impl.v10.type.ObjectResolvedType;
-import org.raml.v2.internal.impl.v10.type.StringResolvedType;
-import org.raml.v2.internal.impl.v10.type.TimeOnlyResolvedType;
-import org.raml.v2.internal.impl.v10.type.TypeVisitor;
-import org.raml.v2.internal.impl.v10.type.UnionResolvedType;
 import org.raml.yagi.framework.nodes.StringNodeImpl;
 
 public class TypeDeclarationModelFactory implements NodeModelFactory

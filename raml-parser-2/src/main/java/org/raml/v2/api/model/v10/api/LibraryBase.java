@@ -15,12 +15,13 @@
  */
 package org.raml.v2.api.model.v10.api;
 
-import java.util.List;
 import org.raml.v2.api.model.v10.common.Annotable;
 import org.raml.v2.api.model.v10.datamodel.TypeDeclaration;
 import org.raml.v2.api.model.v10.methods.Trait;
 import org.raml.v2.api.model.v10.resources.ResourceType;
 import org.raml.v2.api.model.v10.security.SecurityScheme;
+
+import java.util.List;
 
 
 public interface LibraryBase extends Annotable

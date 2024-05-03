@@ -15,18 +15,18 @@
  */
 package org.raml.v2.internal.impl.v10.nodes.factory;
 
-import org.raml.v2.internal.impl.v10.type.TypeId;
-import org.raml.yagi.framework.grammar.rule.ErrorNodeFactory;
-import org.raml.yagi.framework.grammar.rule.NodeFactory;
-import org.raml.v2.internal.impl.commons.rule.NodeReferenceFactory;
-import org.raml.yagi.framework.nodes.ErrorNode;
-import org.raml.yagi.framework.nodes.Node;
-import org.raml.yagi.framework.nodes.Position;
 import org.raml.v2.internal.impl.commons.nodes.TypeExpressionNode;
+import org.raml.v2.internal.impl.commons.rule.NodeReferenceFactory;
 import org.raml.v2.internal.impl.v10.nodes.ArrayTypeExpressionNode;
 import org.raml.v2.internal.impl.v10.nodes.NamedTypeExpressionNode;
 import org.raml.v2.internal.impl.v10.nodes.NativeTypeExpressionNode;
 import org.raml.v2.internal.impl.v10.nodes.UnionTypeExpressionNode;
+import org.raml.v2.internal.impl.v10.type.TypeId;
+import org.raml.yagi.framework.grammar.rule.ErrorNodeFactory;
+import org.raml.yagi.framework.grammar.rule.NodeFactory;
+import org.raml.yagi.framework.nodes.ErrorNode;
+import org.raml.yagi.framework.nodes.Node;
+import org.raml.yagi.framework.nodes.Position;
 
 import javax.annotation.Nonnull;
 import java.text.CharacterIterator;

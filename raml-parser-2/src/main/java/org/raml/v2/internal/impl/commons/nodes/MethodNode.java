@@ -15,11 +15,11 @@
  */
 package org.raml.v2.internal.impl.commons.nodes;
 
-import javax.annotation.Nonnull;
-
+import org.raml.yagi.framework.nodes.KeyValueNodeImpl;
 import org.raml.yagi.framework.nodes.Node;
 import org.raml.yagi.framework.nodes.StringNode;
-import org.raml.yagi.framework.nodes.KeyValueNodeImpl;
+
+import javax.annotation.Nonnull;
 
 public class MethodNode extends KeyValueNodeImpl
 {

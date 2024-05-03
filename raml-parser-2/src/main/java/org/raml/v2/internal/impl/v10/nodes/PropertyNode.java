@@ -15,13 +15,13 @@
  */
 package org.raml.v2.internal.impl.v10.nodes;
 
-import javax.annotation.Nonnull;
-
 import org.raml.v2.internal.impl.commons.nodes.PropertyUtils;
 import org.raml.v2.internal.impl.commons.nodes.TypeDeclarationNode;
 import org.raml.v2.internal.impl.commons.type.ResolvedType;
 import org.raml.yagi.framework.nodes.KeyValueNodeImpl;
 import org.raml.yagi.framework.nodes.Node;
+
+import javax.annotation.Nonnull;
 
 public class PropertyNode extends KeyValueNodeImpl
 {

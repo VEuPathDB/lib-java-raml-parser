@@ -16,147 +16,113 @@
 package org.raml.v2.internal.impl;
 
 import java.io.File;
-import java.io.FileFilter;
 import java.util.List;
+import java.util.Objects;
 
-import org.apache.commons.lang.StringUtils;
 import org.raml.v2.internal.impl.emitter.tck.TckEmitter;
 import org.raml.v2.internal.utils.RamlNodeUtils;
 import org.raml.yagi.framework.nodes.ErrorNode;
 import org.raml.yagi.framework.nodes.Node;
 import org.raml.yagi.framework.nodes.Position;
 
-public class RamlValidator
-{
+public class RamlValidator {
 
-    private static final String USAGE = "Arguments: [-dump] file|url|dir";
+  private static final String USAGE = "Arguments: [-dump] file|url|dir";
 
-    private boolean dump;
-    private String ramlLocation;
-    private int ramlCount;
-    private int validRamlCount;
+  private boolean dump;
+  private String ramlLocation;
+  private int ramlCount;
+  private int validRamlCount;
 
-    private RamlValidator(String[] args)
-    {
-        parseArguments(args);
+  private RamlValidator(String[] args) {
+    parseArguments(args);
+  }
+
+  private void validate() {
+    validate(new File(ramlLocation));
+    if (ramlCount > 1) {
+      System.out.println("=".repeat(50));
+      System.out.format("Parsed %d raml files. %d OK, %d with Errors.\n", ramlCount, validRamlCount, ramlCount - validRamlCount);
+      System.out.println("=".repeat(50));
+    }
+  }
+
+  private void validate(File location) {
+    if (isRamlFile(location)) {
+      validateRaml(location);
     }
 
-    private void validate()
-    {
-        validate(new File(ramlLocation));
-        if (ramlCount > 1)
-        {
-            System.out.println(StringUtils.repeat("=", 50));
-            System.out.format("Parsed %d raml files. %d OK, %d with Errors.\n", ramlCount, validRamlCount, ramlCount - validRamlCount);
-            System.out.println(StringUtils.repeat("=", 50));
-        }
+    File[] files = new File[]{};
+    if (location.isDirectory()) {
+      files = location.listFiles(pathname -> pathname.isDirectory() || isRamlFile(pathname));
+    }
+    for (File file : Objects.requireNonNull(files)) {
+      validate(file);
+    }
+  }
+
+  private void validateRaml(File ramlFile) {
+    var line = "=".repeat(120);
+    System.out.println(line);
+    System.out.println(ramlFile);
+    System.out.println(line);
+
+    ramlCount++;
+    final Node raml = new RamlBuilder().build(ramlFile);
+    List<ErrorNode> errors = RamlNodeUtils.getErrors(raml);
+    if (!errors.isEmpty()) {
+      logErrors(errors);
+      return;
     }
 
-    private void validate(File location)
-    {
-        if (isRamlFile(location))
-        {
-            validateRaml(location);
-        }
+    validRamlCount++;
 
-        File[] files = new File[] {};
-        if (location.isDirectory())
-        {
-            files = location.listFiles(new FileFilter()
-            {
-                @Override
-                public boolean accept(File pathname)
-                {
-                    return pathname.isDirectory() || isRamlFile(pathname);
-                }
-            });
-        }
-        for (File file : files)
-        {
-            validate(file);
-        }
+    if (dump) {
+      System.out.println(line);
+      String json = new TckEmitter().dump(raml);
+      System.out.println(json);
+      System.out.println(line);
+    } else {
+      System.out.println("No errors found.");
     }
 
-    private void validateRaml(File ramlFile)
-    {
-        System.out.println(StringUtils.repeat("=", 120));
-        System.out.println(ramlFile);
-        System.out.println(StringUtils.repeat("=", 120));
+  }
 
-        ramlCount++;
-        final Node raml = new RamlBuilder().build(ramlFile);
-        List<ErrorNode> errors = RamlNodeUtils.getErrors(raml);
-        if (!errors.isEmpty())
-        {
-            logErrors(errors);
-            return;
-        }
+  private boolean isRamlFile(File pathname) {
+    return pathname.isFile() && pathname.getName().endsWith(".raml");
+  }
 
-        validRamlCount++;
-        /*
-         * RamlModelResult ramlModelResult = new RamlModelBuilder().buildApi(ramlFile); System.err.println(ramlModelResult);
-         */
+  public static void main(String[] args) {
+    new RamlValidator(args).validate();
+  }
 
-        if (dump)
-        {
-            System.out.println(StringUtils.repeat("=", 120));
-            String json = new TckEmitter().dump(raml);
-            System.out.println(json);
-            System.out.println(StringUtils.repeat("=", 120));
-        }
-        else
-        {
-            System.out.println("No errors found.");
-        }
-
+  private void logErrors(List<ErrorNode> errors) {
+    String label = errors.size() > 1 ? "errors" : "error";
+    System.out.format("%d %s found:\n\n", errors.size(), label);
+    for (ErrorNode error : errors) {
+      String message = error.getErrorMessage();
+      int idx = message.indexOf(". Options are");
+      if (idx != -1) {
+        message = message.substring(0, idx);
+      }
+      Position position = error.getSource() != null ? error.getSource().getStartPosition() : error.getStartPosition();
+      System.out.format("\t- %s %s\n\n", message, position);
     }
+  }
 
-    private boolean isRamlFile(File pathname)
-    {
-        return pathname.isFile() && pathname.getName().endsWith(".raml");
+  private void parseArguments(String[] args) {
+    if (args.length < 1 || args.length > 2) {
+      throw new IllegalArgumentException(USAGE);
     }
-
-    public static void main(String[] args)
-    {
-        new RamlValidator(args).validate();
+    if (args.length == 2) {
+      if (!"-dump".equals(args[0])) {
+        throw new IllegalArgumentException(USAGE);
+      }
+      this.dump = true;
+      this.ramlLocation = args[1];
+    } else {
+      this.ramlLocation = args[0];
     }
-
-    private void logErrors(List<ErrorNode> errors)
-    {
-        String label = errors.size() > 1 ? "errors" : "error";
-        System.out.format("%d %s found:\n\n", errors.size(), label);
-        for (ErrorNode error : errors)
-        {
-            String message = error.getErrorMessage();
-            int idx = message.indexOf(". Options are");
-            if (idx != -1)
-            {
-                message = message.substring(0, idx);
-            }
-            Position position = error.getSource() != null ? error.getSource().getStartPosition() : error.getStartPosition();
-            System.out.format("\t- %s %s\n\n", message, position);
-        }
-    }
-
-    private void parseArguments(String[] args)
-    {
-        if (args.length < 1 || args.length > 2)
-        {
-            throw new IllegalArgumentException(USAGE);
-        }
-        if (args.length == 2)
-        {
-            if (!"-dump".equals(args[0]))
-            {
-                throw new IllegalArgumentException(USAGE);
-            }
-            this.dump = true;
-            this.ramlLocation = args[1];
-        }
-        else
-        {
-            this.ramlLocation = args[0];
-        }
-    }
+  }
 
 }

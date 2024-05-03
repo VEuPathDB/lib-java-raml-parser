@@ -15,28 +15,15 @@
  */
 package org.raml.v2.internal.impl.v10.nodes;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import org.raml.v2.internal.impl.commons.nodes.TypeExpressionNode;
 import org.raml.v2.internal.impl.commons.type.ResolvedType;
-import org.raml.v2.internal.impl.v10.type.AnyResolvedType;
-import org.raml.v2.internal.impl.v10.type.ArrayResolvedType;
-import org.raml.v2.internal.impl.v10.type.BooleanResolvedType;
-import org.raml.v2.internal.impl.v10.type.DateOnlyResolvedType;
-import org.raml.v2.internal.impl.v10.type.DateTimeOnlyResolvedType;
-import org.raml.v2.internal.impl.v10.type.DateTimeResolvedType;
-import org.raml.v2.internal.impl.v10.type.FileResolvedType;
-import org.raml.v2.internal.impl.v10.type.IntegerResolvedType;
-import org.raml.v2.internal.impl.v10.type.NullResolvedType;
-import org.raml.v2.internal.impl.v10.type.NumberResolvedType;
-import org.raml.v2.internal.impl.v10.type.ObjectResolvedType;
-import org.raml.v2.internal.impl.v10.type.StringResolvedType;
-import org.raml.v2.internal.impl.v10.type.TimeOnlyResolvedType;
-import org.raml.v2.internal.impl.v10.type.TypeId;
+import org.raml.v2.internal.impl.v10.type.*;
 import org.raml.yagi.framework.nodes.AbstractStringNode;
 import org.raml.yagi.framework.nodes.Node;
 import org.raml.yagi.framework.nodes.SimpleTypeNode;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public class NativeTypeExpressionNode extends AbstractStringNode implements TypeExpressionNode, SimpleTypeNode<String>
 {

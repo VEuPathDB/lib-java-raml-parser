@@ -15,16 +15,13 @@
  */
 package org.raml.v2.internal.impl.commons.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.raml.yagi.framework.nodes.SimpleTypeNode;
-import org.raml.v2.internal.impl.commons.model.factory.TypeDeclarationModelFactory;
-import org.raml.v2.internal.impl.commons.model.type.TypeDeclaration;
 import org.raml.v2.internal.impl.commons.nodes.MethodNode;
 import org.raml.v2.internal.impl.commons.nodes.ResourceNode;
 import org.raml.yagi.framework.nodes.Node;
-import org.raml.yagi.framework.util.NodeSelector;
+import org.raml.yagi.framework.nodes.SimpleTypeNode;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Resource extends Annotable<ResourceNode>
 {

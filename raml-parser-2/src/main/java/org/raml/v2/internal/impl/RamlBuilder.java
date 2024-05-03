@@ -16,7 +16,6 @@
 package org.raml.v2.internal.impl;
 
 import static com.google.common.collect.Iterables.limit;
-import static org.raml.v2.internal.impl.commons.RamlVersion.RAML_10;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -26,11 +25,9 @@ import java.io.Reader;
 import java.io.StringReader;
 import java.util.List;
 
-import com.google.common.collect.Sets;
 import org.apache.commons.io.IOUtils;
 import org.raml.v2.api.loader.*;
 import org.raml.v2.internal.impl.commons.RamlHeader;
-import org.raml.v2.internal.impl.v08.Raml08Builder;
 import org.raml.v2.internal.impl.v10.Raml10Builder;
 import org.raml.v2.internal.utils.StreamUtils;
 import org.raml.yagi.framework.grammar.rule.ErrorNodeFactory;
@@ -38,7 +35,6 @@ import org.raml.yagi.framework.nodes.Node;
 
 import com.google.common.base.Joiner;
 import com.google.common.base.Splitter;
-import com.google.common.base.Strings;
 
 /**
  * RamlBuilder create a Node representation of your raml.
@@ -115,14 +111,7 @@ public class RamlBuilder
 
             RamlHeader ramlHeader = RamlHeader.parse(stringContent);
             Node result;
-            if (RAML_10 == ramlHeader.getVersion())
-            {
-                result = new Raml10Builder().build(stringContent, ramlHeader.getFragment(), resourceLoader, resourceLocation, maxPhaseNumber);
-            }
-            else
-            {
-                result = new Raml08Builder().build(stringContent, resourceLoader, resourceLocation, maxPhaseNumber);
-            }
+            result = new Raml10Builder().build(stringContent, ramlHeader.getFragment(), resourceLoader, resourceLocation, maxPhaseNumber);
             return result;
         }
         catch (IOException ioe)

@@ -15,27 +15,24 @@
  */
 package org.raml.v2.internal.impl.v10.type;
 
+import org.raml.v2.internal.impl.commons.nodes.TypeDeclarationNode;
 import org.raml.v2.internal.impl.commons.nodes.TypeExpressionNode;
 import org.raml.v2.internal.impl.commons.rule.RamlErrorNodeFactory;
 import org.raml.v2.internal.impl.commons.type.ResolvedCustomFacets;
+import org.raml.v2.internal.impl.commons.type.ResolvedType;
 import org.raml.v2.internal.impl.commons.type.SchemaBasedResolvedType;
 import org.raml.v2.internal.impl.v10.grammar.Raml10Grammar;
 import org.raml.v2.internal.impl.v10.rules.TypesUtils;
 import org.raml.yagi.framework.grammar.rule.AnyOfRule;
 import org.raml.yagi.framework.nodes.Node;
-import org.raml.v2.internal.impl.commons.type.ResolvedType;
-import org.raml.v2.internal.impl.commons.nodes.TypeDeclarationNode;
 import org.raml.yagi.framework.util.NodeSelector;
-
-import static org.raml.v2.internal.impl.v10.grammar.Raml10Grammar.ITEMS_KEY_NAME;
-import static org.raml.v2.internal.impl.v10.grammar.Raml10Grammar.MAX_ITEMS_KEY_NAME;
-import static org.raml.v2.internal.impl.v10.grammar.Raml10Grammar.MIN_ITEMS_KEY_NAME;
-import static org.raml.v2.internal.impl.v10.grammar.Raml10Grammar.UNIQUE_ITEMS_KEY_NAME;
-import static org.raml.yagi.framework.util.NodeSelector.selectBooleanValue;
-import static org.raml.yagi.framework.util.NodeSelector.selectIntValue;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+
+import static org.raml.v2.internal.impl.v10.grammar.Raml10Grammar.*;
+import static org.raml.yagi.framework.util.NodeSelector.selectBooleanValue;
+import static org.raml.yagi.framework.util.NodeSelector.selectIntValue;
 
 public class ArrayResolvedType extends XmlFacetsCapableType
 {

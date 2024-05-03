@@ -19,7 +19,6 @@ import org.raml.v2.internal.utils.JSonDumper;
 import org.raml.yagi.framework.nodes.KeyValueNode;
 import org.raml.yagi.framework.nodes.Node;
 import org.raml.yagi.framework.nodes.ObjectNode;
-import org.raml.yagi.framework.nodes.StringNode;
 import org.raml.yagi.framework.util.NodeSelector;
 
 

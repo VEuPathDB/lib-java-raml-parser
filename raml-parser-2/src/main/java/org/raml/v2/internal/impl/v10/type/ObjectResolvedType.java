@@ -34,15 +34,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.raml.v2.internal.impl.v10.grammar.Raml10Grammar.ADDITIONAL_PROPERTIES_KEY_NAME;
-import static org.raml.v2.internal.impl.v10.grammar.Raml10Grammar.DISCRIMINATOR_KEY_NAME;
-import static org.raml.v2.internal.impl.v10.grammar.Raml10Grammar.DISCRIMINATOR_VALUE_KEY_NAME;
-import static org.raml.v2.internal.impl.v10.grammar.Raml10Grammar.MAX_PROPERTIES_KEY_NAME;
-import static org.raml.v2.internal.impl.v10.grammar.Raml10Grammar.MIN_PROPERTIES_KEY_NAME;
-import static org.raml.v2.internal.impl.v10.grammar.Raml10Grammar.PROPERTIES_KEY_NAME;
-import static org.raml.yagi.framework.util.NodeSelector.selectBooleanValue;
-import static org.raml.yagi.framework.util.NodeSelector.selectIntValue;
-import static org.raml.yagi.framework.util.NodeSelector.selectStringValue;
+import static org.raml.v2.internal.impl.v10.grammar.Raml10Grammar.*;
+import static org.raml.yagi.framework.util.NodeSelector.*;
 
 public class ObjectResolvedType extends XmlFacetsCapableType
 {

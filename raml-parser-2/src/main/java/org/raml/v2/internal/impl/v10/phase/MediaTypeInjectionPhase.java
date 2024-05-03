@@ -16,24 +16,15 @@
 package org.raml.v2.internal.impl.v10.phase;
 
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.Nonnull;
-
 import org.raml.v2.internal.impl.commons.nodes.BodyNode;
 import org.raml.v2.internal.impl.v10.grammar.Raml10Grammar;
-import org.raml.yagi.framework.nodes.BaseNode;
-import org.raml.yagi.framework.nodes.DefaultPosition;
-import org.raml.yagi.framework.nodes.KeyValueNode;
-import org.raml.yagi.framework.nodes.KeyValueNodeImpl;
-import org.raml.yagi.framework.nodes.Node;
-import org.raml.yagi.framework.nodes.NodeType;
-import org.raml.yagi.framework.nodes.ObjectNode;
-import org.raml.yagi.framework.nodes.Position;
-import org.raml.yagi.framework.nodes.StringNode;
+import org.raml.yagi.framework.nodes.*;
 import org.raml.yagi.framework.phase.Phase;
 import org.raml.yagi.framework.util.NodeSelector;
+
+import javax.annotation.Nonnull;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MediaTypeInjectionPhase implements Phase
 {

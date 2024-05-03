@@ -15,10 +15,10 @@
  */
 package org.raml.v2.internal.impl.v10.nodes;
 
-import javax.annotation.Nonnull;
-
 import org.raml.v2.internal.impl.commons.nodes.OverridableNode;
 import org.raml.yagi.framework.nodes.Node;
+
+import javax.annotation.Nonnull;
 
 public class OverridableNativeTypeExpressionNode extends NativeTypeExpressionNode implements OverridableNode
 {

@@ -15,8 +15,8 @@
  */
 package org.raml.v2.internal.impl.commons.model.type;
 
-import org.raml.yagi.framework.nodes.KeyValueNode;
 import org.raml.v2.internal.impl.commons.type.ResolvedType;
+import org.raml.yagi.framework.nodes.KeyValueNode;
 
 public class NullTypeDeclaration extends TypeDeclaration
 {

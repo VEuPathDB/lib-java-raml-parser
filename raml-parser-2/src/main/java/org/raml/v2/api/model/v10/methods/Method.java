@@ -15,9 +15,9 @@
  */
 package org.raml.v2.api.model.v10.methods;
 
-import javax.annotation.Nullable;
-
 import org.raml.v2.api.model.v10.resources.Resource;
+
+import javax.annotation.Nullable;
 
 public interface Method extends MethodBase
 {

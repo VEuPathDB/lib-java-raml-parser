@@ -19,7 +19,6 @@ import org.raml.yagi.framework.model.AbstractNodeModel;
 import org.raml.yagi.framework.nodes.KeyValueNode;
 import org.raml.yagi.framework.nodes.Node;
 import org.raml.yagi.framework.nodes.SimpleTypeNode;
-import org.raml.yagi.framework.model.NodeModel;
 import org.raml.yagi.framework.util.NodeSelector;
 
 public class Parameter extends AbstractNodeModel<KeyValueNode>

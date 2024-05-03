@@ -17,26 +17,20 @@ package org.raml.v2.internal.utils;
 
 import org.raml.yagi.framework.nodes.Node;
 import org.raml.yagi.framework.phase.Phase;
-import org.raml.yagi.framework.util.NodeUtils;
 
-public class PhaseUtils
-{
+public class PhaseUtils {
 
-    public static Node applyPhases(Node node, Phase... phases)
-    {
-        Node result = node;
-        if (!RamlNodeUtils.isErrorResult(result))
-        {
-            for (Phase phase : phases)
-            {
-                result = phase.apply(result);
-                if (!RamlNodeUtils.isErrorResult(result))
-                {
-                    return result;
-                }
-            }
+  public static Node applyPhases(Node node, Phase... phases) {
+    Node result = node;
+    if (!RamlNodeUtils.isErrorResult(result)) {
+      for (Phase phase : phases) {
+        result = phase.apply(result);
+        if (!RamlNodeUtils.isErrorResult(result)) {
+          return result;
         }
-        return result;
-
+      }
     }
+    return result;
+
+  }
 }

@@ -15,9 +15,6 @@
  */
 package org.raml.v2.internal.impl.v10.nodes;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import org.raml.v2.internal.impl.commons.nodes.TypeDeclarationNode;
 import org.raml.v2.internal.impl.commons.nodes.TypeExpressionNode;
 import org.raml.v2.internal.impl.commons.type.ResolvedType;
@@ -27,6 +24,9 @@ import org.raml.yagi.framework.nodes.AbstractRamlNode;
 import org.raml.yagi.framework.nodes.Node;
 import org.raml.yagi.framework.nodes.NodeType;
 import org.raml.yagi.framework.nodes.SimpleTypeNode;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public class ArrayTypeExpressionNode extends AbstractRamlNode implements TypeExpressionNode, SimpleTypeNode<String>
 {

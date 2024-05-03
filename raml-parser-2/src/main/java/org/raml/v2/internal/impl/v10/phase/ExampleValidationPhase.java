@@ -53,11 +53,7 @@ import java.util.HashSet;
 import java.util.List;
 
 import static org.apache.commons.lang.StringUtils.isBlank;
-import static org.raml.v2.internal.utils.xml.XMLLocalConstants.DISALLOW_DOCTYPE_DECL_FEATURE;
-import static org.raml.v2.internal.utils.xml.XMLLocalConstants.EXTERNAL_GENERAL_ENTITIES_FEATURE;
-import static org.raml.v2.internal.utils.xml.XMLLocalConstants.EXTERNAL_PARAMETER_ENTITIES_FEATURE;
-import static org.raml.v2.internal.utils.xml.XMLLocalConstants.expandEntities;
-import static org.raml.v2.internal.utils.xml.XMLLocalConstants.externalEntities;
+import static org.raml.v2.internal.utils.xml.XMLLocalConstants.*;
 
 public class ExampleValidationPhase implements Phase
 {

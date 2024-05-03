@@ -6,10 +6,8 @@ DEPRECATION NOTICE: please note that this parser is now deprecated, please use [
 [![Gitter](https://badges.gitter.im/JoinChat.svg)](https://gitter.im/raml-org/raml-java-parser?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.raml/raml-parser-2/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.raml/raml-parser-2)
 
-This is a Java implementation of a [RAML](http://raml.org) parser for versions [1.0](http://raml.org/raml-10-spec) and [0.8](http://raml.org/raml-08-spec).
+This is a Java implementation of a [RAML](http://raml.org) parser for versions [1.0](http://raml.org/raml-10-spec).
 The parser depends on SnakeYaml, a Java YAML parser.
-
-The old version that only support RAML 0.8 is still available [here](https://github.com/raml-org/raml-java-parser/tree/0.8.x).
 
 See http://raml.org for more information about RAML.
 

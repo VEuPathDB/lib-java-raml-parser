@@ -15,18 +15,12 @@
  */
 package org.raml.v2.internal.impl.v10.nodes;
 
-import javax.annotation.Nullable;
-
 import org.raml.v2.internal.impl.commons.nodes.OverlayableStringNode;
 import org.raml.yagi.framework.grammar.rule.DefaultValue;
 import org.raml.yagi.framework.grammar.rule.ErrorNodeFactory;
-import org.raml.yagi.framework.nodes.DefaultPosition;
-import org.raml.yagi.framework.nodes.KeyValueNode;
-import org.raml.yagi.framework.nodes.KeyValueNodeImpl;
-import org.raml.yagi.framework.nodes.Node;
-import org.raml.yagi.framework.nodes.SimpleTypeNode;
-import org.raml.yagi.framework.nodes.StringNodeImpl;
-import org.raml.yagi.framework.nodes.ObjectNodeImpl;
+import org.raml.yagi.framework.nodes.*;
+
+import javax.annotation.Nullable;
 
 public class DisplayNameDefaultValue implements DefaultValue
 {

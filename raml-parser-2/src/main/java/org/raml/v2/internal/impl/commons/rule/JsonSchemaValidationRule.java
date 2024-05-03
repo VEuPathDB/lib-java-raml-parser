@@ -24,25 +24,25 @@ import com.github.fge.jsonschema.core.report.ProcessingReport;
 import com.github.fge.jsonschema.main.JsonSchema;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
+import org.raml.v2.internal.impl.commons.type.JsonSchemaExternalType;
+import org.raml.v2.internal.utils.JSonDumper;
+import org.raml.v2.internal.utils.SchemaGenerator;
 import org.raml.yagi.framework.grammar.rule.ErrorNodeFactory;
 import org.raml.yagi.framework.grammar.rule.Rule;
 import org.raml.yagi.framework.nodes.Node;
 import org.raml.yagi.framework.nodes.StringNode;
 import org.raml.yagi.framework.suggester.ParsingContext;
 import org.raml.yagi.framework.suggester.Suggestion;
-import org.raml.v2.internal.impl.commons.type.JsonSchemaExternalType;
-import org.raml.v2.internal.utils.JSonDumper;
-import org.raml.v2.internal.utils.SchemaGenerator;
 
 import javax.annotation.Nonnull;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
-import static org.raml.yagi.framework.nodes.jackson.JsonUtils.parseJson;
 import static com.github.fge.jsonschema.core.report.LogLevel.ERROR;
 import static com.github.fge.jsonschema.core.report.LogLevel.WARNING;
 import static org.apache.commons.io.IOUtils.DIR_SEPARATOR_UNIX;
+import static org.raml.yagi.framework.nodes.jackson.JsonUtils.parseJson;
 
 /**
  * Validates a string node content with the specified json schema

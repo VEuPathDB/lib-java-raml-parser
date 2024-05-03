@@ -15,10 +15,10 @@
  */
 package org.raml.v2.api.model.v10.security;
 
-import java.util.List;
-
 import org.raml.v2.api.model.v10.common.Annotable;
 import org.raml.v2.api.model.v10.system.types.FixedUriString;
+
+import java.util.List;
 
 
 public interface SecuritySchemeSettings extends Annotable

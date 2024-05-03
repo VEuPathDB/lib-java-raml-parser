@@ -16,8 +16,8 @@
 package org.raml.v2.internal.impl.commons.model.type;
 
 
-import org.raml.yagi.framework.nodes.KeyValueNode;
 import org.raml.v2.internal.impl.v10.type.IntegerResolvedType;
+import org.raml.yagi.framework.nodes.KeyValueNode;
 
 public class IntegerTypeDeclaration extends NumberTypeDeclaration
 {

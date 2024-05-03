@@ -19,7 +19,6 @@ import org.raml.yagi.framework.model.AbstractNodeModel;
 import org.raml.yagi.framework.nodes.KeyValueNode;
 import org.raml.yagi.framework.nodes.Node;
 import org.raml.yagi.framework.nodes.StringNode;
-import org.raml.yagi.framework.model.NodeModel;
 import org.raml.yagi.framework.util.NodeSelector;
 
 public class BodyLike extends AbstractNodeModel<KeyValueNode>

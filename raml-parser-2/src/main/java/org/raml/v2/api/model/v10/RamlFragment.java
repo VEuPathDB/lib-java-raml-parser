@@ -15,9 +15,9 @@
  */
 package org.raml.v2.api.model.v10;
 
-import javax.annotation.Nullable;
-
 import org.apache.commons.lang.StringUtils;
+
+import javax.annotation.Nullable;
 
 public enum RamlFragment
 {

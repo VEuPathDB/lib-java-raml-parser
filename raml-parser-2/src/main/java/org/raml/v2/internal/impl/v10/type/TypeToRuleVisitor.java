@@ -40,9 +40,7 @@ import java.util.regex.Pattern;
 import static com.google.common.base.Predicates.not;
 import static com.google.common.collect.Maps.filterEntries;
 import static org.apache.commons.lang.StringUtils.isNotEmpty;
-import static org.raml.v2.internal.utils.BasicRuleFactory.property;
-import static org.raml.v2.internal.utils.BasicRuleFactory.regexValue;
-import static org.raml.v2.internal.utils.BasicRuleFactory.stringValue;
+import static org.raml.v2.internal.utils.BasicRuleFactory.*;
 import static org.raml.v2.internal.utils.ValueUtils.asBoolean;
 
 public class TypeToRuleVisitor implements TypeVisitor<Rule>
@@ -204,7 +202,7 @@ public class TypeToRuleVisitor implements TypeVisitor<Rule>
 
             /*
              * if (isNotEmpty(objectTypeDefinition.getDiscriminator())) {
-             * 
+             *
              * StringTypeRule value = new StringTypeRule(); objectRule.with(property(objectTypeDefinition.getDiscriminator(), value).); }
              */
 

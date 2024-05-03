@@ -15,10 +15,10 @@
  */
 package org.raml.v2.internal.impl.v10.nodes;
 
+import org.raml.v2.internal.impl.commons.nodes.AbstractReferenceNode;
 import org.raml.v2.internal.impl.commons.nodes.LibraryNodeProvider;
 import org.raml.v2.internal.impl.v10.grammar.Raml10Grammar;
 import org.raml.yagi.framework.nodes.Node;
-import org.raml.v2.internal.impl.commons.nodes.AbstractReferenceNode;
 import org.raml.yagi.framework.util.NodeSelector;
 
 import javax.annotation.Nonnull;

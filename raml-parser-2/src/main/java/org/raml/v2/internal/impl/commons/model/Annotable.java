@@ -15,13 +15,12 @@
  */
 package org.raml.v2.internal.impl.commons.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import org.raml.v2.internal.impl.commons.nodes.AnnotationNode;
 import org.raml.yagi.framework.model.AbstractNodeModel;
 import org.raml.yagi.framework.nodes.Node;
-import org.raml.yagi.framework.model.NodeModel;
-import org.raml.v2.internal.impl.commons.nodes.AnnotationNode;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Annotable<T extends Node> extends AbstractNodeModel<T>
 {

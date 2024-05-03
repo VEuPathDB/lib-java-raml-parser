@@ -15,44 +15,21 @@
  */
 package org.raml.v2.internal.impl.v10.type;
 
-import static org.raml.v2.internal.utils.ValueUtils.asBoolean;
-import static org.raml.v2.internal.utils.ValueUtils.defaultTo;
-import static org.raml.v2.internal.utils.ValueUtils.isEmpty;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Stack;
-
-import javax.annotation.Nonnull;
-import javax.xml.namespace.QName;
-
-import org.apache.ws.commons.schema.XmlSchema;
-import org.apache.ws.commons.schema.XmlSchemaAny;
-import org.apache.ws.commons.schema.XmlSchemaAttribute;
-import org.apache.ws.commons.schema.XmlSchemaChoice;
-import org.apache.ws.commons.schema.XmlSchemaChoiceMember;
-import org.apache.ws.commons.schema.XmlSchemaCollection;
-import org.apache.ws.commons.schema.XmlSchemaComplexType;
-import org.apache.ws.commons.schema.XmlSchemaContentProcessing;
-import org.apache.ws.commons.schema.XmlSchemaElement;
-import org.apache.ws.commons.schema.XmlSchemaEnumerationFacet;
-import org.apache.ws.commons.schema.XmlSchemaForm;
-import org.apache.ws.commons.schema.XmlSchemaMaxInclusiveFacet;
-import org.apache.ws.commons.schema.XmlSchemaMaxLengthFacet;
-import org.apache.ws.commons.schema.XmlSchemaMinInclusiveFacet;
-import org.apache.ws.commons.schema.XmlSchemaMinLengthFacet;
-import org.apache.ws.commons.schema.XmlSchemaPatternFacet;
-import org.apache.ws.commons.schema.XmlSchemaSequence;
-import org.apache.ws.commons.schema.XmlSchemaSequenceMember;
-import org.apache.ws.commons.schema.XmlSchemaSimpleType;
-import org.apache.ws.commons.schema.XmlSchemaSimpleTypeRestriction;
-import org.apache.ws.commons.schema.XmlSchemaType;
+import org.apache.ws.commons.schema.*;
 import org.apache.ws.commons.schema.constants.Constants;
 import org.raml.v2.internal.impl.commons.type.JsonSchemaExternalType;
 import org.raml.v2.internal.impl.commons.type.ResolvedType;
 import org.raml.v2.internal.impl.commons.type.XmlSchemaExternalType;
 import org.raml.v2.internal.utils.xml.XMLChar;
+
+import javax.annotation.Nonnull;
+import javax.xml.namespace.QName;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Stack;
+
+import static org.raml.v2.internal.utils.ValueUtils.*;
 
 public class TypeToXmlSchemaVisitor implements TypeVisitor<XmlSchemaType>
 {

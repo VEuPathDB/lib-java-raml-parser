@@ -15,13 +15,13 @@
  */
 package org.raml.v2.internal.impl.v10.rules;
 
-import javax.annotation.Nullable;
-
 import org.raml.v2.internal.impl.v10.nodes.NativeTypeExpressionNode;
 import org.raml.v2.internal.impl.v10.nodes.OverridableNativeTypeExpressionNode;
 import org.raml.v2.internal.impl.v10.type.TypeId;
 import org.raml.yagi.framework.grammar.rule.DefaultValue;
 import org.raml.yagi.framework.nodes.Node;
+
+import javax.annotation.Nullable;
 
 public class TypeDefaultValue implements DefaultValue
 {

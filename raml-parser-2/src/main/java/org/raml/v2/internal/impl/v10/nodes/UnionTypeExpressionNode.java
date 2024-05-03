@@ -15,22 +15,18 @@
  */
 package org.raml.v2.internal.impl.v10.nodes;
 
-import static org.raml.v2.internal.impl.v10.nodes.ArrayTypeExpressionNode.addParenthesesIfNeeded;
-
-import org.raml.v2.internal.impl.commons.type.ResolvedCustomFacets;
-import org.raml.yagi.framework.nodes.AbstractRamlNode;
-import org.raml.yagi.framework.nodes.Node;
-import org.raml.yagi.framework.nodes.NodeType;
-import org.raml.yagi.framework.nodes.Position;
 import org.raml.v2.internal.impl.commons.nodes.TypeExpressionNode;
+import org.raml.v2.internal.impl.commons.type.ResolvedCustomFacets;
 import org.raml.v2.internal.impl.commons.type.ResolvedType;
 import org.raml.v2.internal.impl.v10.type.UnionResolvedType;
-import org.raml.yagi.framework.nodes.SimpleTypeNode;
+import org.raml.yagi.framework.nodes.*;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.raml.v2.internal.impl.v10.nodes.ArrayTypeExpressionNode.addParenthesesIfNeeded;
 
 public class UnionTypeExpressionNode extends AbstractRamlNode implements TypeExpressionNode, SimpleTypeNode<String>
 {

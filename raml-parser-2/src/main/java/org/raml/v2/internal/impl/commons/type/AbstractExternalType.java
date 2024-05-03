@@ -15,14 +15,14 @@
  */
 package org.raml.v2.internal.impl.commons.type;
 
-import java.util.List;
-
 import org.raml.v2.internal.impl.commons.nodes.FacetNode;
 import org.raml.v2.internal.impl.commons.nodes.TypeDeclarationField;
 import org.raml.v2.internal.impl.commons.nodes.TypeDeclarationNode;
 import org.raml.v2.internal.impl.commons.nodes.TypeExpressionNode;
 import org.raml.v2.internal.impl.commons.rule.RamlErrorNodeFactory;
 import org.raml.yagi.framework.util.NodeUtils;
+
+import java.util.List;
 
 public abstract class AbstractExternalType extends BaseType implements SchemaBasedResolvedType
 {

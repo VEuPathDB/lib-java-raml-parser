@@ -15,65 +15,48 @@
  */
 package org.raml.v2.internal.utils;
 
-import com.google.common.collect.Lists;
-
+import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.lang.StringUtils;
 import org.raml.yagi.framework.nodes.ArrayNode;
 import org.raml.yagi.framework.nodes.KeyValueNode;
 import org.raml.yagi.framework.nodes.Node;
 import org.raml.yagi.framework.nodes.ObjectNode;
 import org.raml.yagi.framework.nodes.StringNode;
 
-public class JSonDumper
-{
+public class JSonDumper {
 
-    public static String dump(Node node)
-    {
-        return dumpNode(node);
-    }
+  public static String dump(Node node) {
+    return dumpNode(node);
+  }
 
-    private static String dump(Node node, String start, String separator, String end)
-    {
-        StringBuilder builder = new StringBuilder();
-        List<String> children = dumpChildren(node.getChildren());
-        builder.append(start).append(StringUtils.join(children, separator)).append(end);
-        return builder.toString();
-    }
+  private static String dump(Node node, String start, String separator, String end) {
+    StringBuilder builder = new StringBuilder();
+    List<String> children = dumpChildren(node.getChildren());
+    builder.append(start).append(String.join(separator, children)).append(end);
+    return builder.toString();
+  }
 
-    private static List<String> dumpChildren(List<Node> children)
-    {
-        List<String> valueChildren = Lists.newArrayList();
-        for (Node child : children)
-        {
-            valueChildren.add(dumpNode(child));
-        }
-        return valueChildren;
+  private static List<String> dumpChildren(List<Node> children) {
+    List<String> valueChildren = new ArrayList<>();
+    for (Node child : children) {
+      valueChildren.add(dumpNode(child));
     }
+    return valueChildren;
+  }
 
-    private static String dumpNode(Node child)
-    {
-        if (child instanceof KeyValueNode)
-        {
-            KeyValueNode keyValueNode = (KeyValueNode) child;
-            return dumpNode(keyValueNode.getKey()) + " : " + dumpNode(keyValueNode.getValue());
-        }
-        else if (child instanceof ObjectNode)
-        {
-            return dump(child, "{\n", ",\n", "\n}");
-        }
-        else if (child instanceof StringNode)
-        {
-            return "\"" + ((StringNode) child).getValue() + "\"";
-        }
-        else if (child instanceof ArrayNode)
-        {
-            return dump(child, "[\n", ",\n", "\n]");
-        }
-        else
-        {
-            return child.toString();
-        }
+  private static String dumpNode(Node child) {
+    if (child instanceof KeyValueNode) {
+      KeyValueNode keyValueNode = (KeyValueNode) child;
+      return dumpNode(keyValueNode.getKey()) + " : " + dumpNode(keyValueNode.getValue());
+    } else if (child instanceof ObjectNode) {
+      return dump(child, "{\n", ",\n", "\n}");
+    } else if (child instanceof StringNode) {
+      return "\"" + ((StringNode) child).getValue() + "\"";
+    } else if (child instanceof ArrayNode) {
+      return dump(child, "[\n", ",\n", "\n]");
+    } else {
+      return child.toString();
     }
+  }
 }

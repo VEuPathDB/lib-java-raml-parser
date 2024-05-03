@@ -15,16 +15,14 @@
  */
 package org.raml.v2.internal.impl.v10.type;
 
-import java.awt.geom.Rectangle2D;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.Map;
 import org.raml.v2.internal.impl.commons.type.JsonSchemaExternalType;
 import org.raml.v2.internal.impl.commons.type.ResolvedType;
 import org.raml.v2.internal.impl.commons.type.XmlSchemaExternalType;
 
 import javax.json.*;
+import java.math.BigDecimal;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 

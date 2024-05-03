@@ -17,20 +17,16 @@ package org.raml.v2.internal.utils;
 
 import java.util.List;
 
-public class ValueUtils
-{
-    public static boolean asBoolean(Boolean booleanValue, boolean defaultValue)
-    {
-        return booleanValue == null ? defaultValue : booleanValue;
-    }
+public class ValueUtils {
+  public static boolean asBoolean(Boolean booleanValue, boolean defaultValue) {
+    return booleanValue == null ? defaultValue : booleanValue;
+  }
 
-    public static <T> T defaultTo(T stringValue, T defaultValue)
-    {
-        return stringValue == null ? defaultValue : stringValue;
-    }
+  public static <T> T defaultTo(T stringValue, T defaultValue) {
+    return stringValue == null ? defaultValue : stringValue;
+  }
 
-    public static boolean isEmpty(List<?> collection)
-    {
-        return collection == null || collection.isEmpty();
-    }
+  public static boolean isEmpty(List<?> collection) {
+    return collection == null || collection.isEmpty();
+  }
 }

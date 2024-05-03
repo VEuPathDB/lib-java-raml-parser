@@ -16,13 +16,13 @@
 package org.raml.v2.internal.impl.v10.nodes.factory;
 
 
-import javax.annotation.Nonnull;
-
 import org.raml.yagi.framework.grammar.rule.NodeFactory;
 import org.raml.yagi.framework.nodes.KeyValueNodeImpl;
 import org.raml.yagi.framework.nodes.Node;
-import org.raml.yagi.framework.nodes.StringNodeImpl;
 import org.raml.yagi.framework.nodes.ObjectNodeImpl;
+import org.raml.yagi.framework.nodes.StringNodeImpl;
+
+import javax.annotation.Nonnull;
 
 public class RamlScalarValueFactory implements NodeFactory
 {

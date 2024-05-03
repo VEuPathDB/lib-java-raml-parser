@@ -20,37 +20,28 @@ import org.raml.yagi.framework.nodes.Node;
 import org.raml.yagi.framework.util.NodeAppender;
 import org.raml.yagi.framework.util.TreeNodeDumper;
 
-import java.io.PrintStream;
-import java.io.PrintWriter;
 import java.io.Writer;
 
 
-public class RamlTreeNodeDumper extends TreeNodeDumper
-{
+public class RamlTreeNodeDumper extends TreeNodeDumper {
 
 
-    public RamlTreeNodeDumper(NodeAppender appender)
-    {
+  public RamlTreeNodeDumper(NodeAppender appender) {
+    super(appender);
+  }
 
-        super(appender);
+  public RamlTreeNodeDumper(Writer writer) {
+    super(writer);
+  }
+
+  protected void dumpChildren(Node node) {
+    super.dumpChildren(node);
+
+    if (node instanceof LibraryLinkNode) {
+      final Node refNode = ((LibraryLinkNode) node).getRefNode();
+      if (refNode != null) {
+        dump(refNode);
+      }
     }
-
-    public RamlTreeNodeDumper(Writer writer)
-    {
-        super(writer);
-    }
-
-    protected void dumpChildren(Node node)
-    {
-        super.dumpChildren(node);
-
-        if (node instanceof LibraryLinkNode)
-        {
-            final Node refNode = ((LibraryLinkNode) node).getRefNode();
-            if (refNode != null)
-            {
-                dump(refNode);
-            }
-        }
-    }
+  }
 }

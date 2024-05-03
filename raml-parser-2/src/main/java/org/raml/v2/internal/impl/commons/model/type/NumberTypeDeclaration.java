@@ -15,8 +15,8 @@
  */
 package org.raml.v2.internal.impl.commons.model.type;
 
-import org.raml.yagi.framework.nodes.KeyValueNode;
 import org.raml.v2.internal.impl.v10.type.NumberResolvedType;
+import org.raml.yagi.framework.nodes.KeyValueNode;
 
 import java.util.List;
 

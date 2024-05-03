@@ -15,24 +15,20 @@
  */
 package org.raml.v2.internal.impl.v10.rules;
 
+import org.raml.v2.internal.impl.commons.nodes.TypeDeclarationField;
+import org.raml.v2.internal.impl.commons.nodes.TypeDeclarationNode;
+import org.raml.v2.internal.impl.v10.nodes.LibraryLinkNode;
+import org.raml.v2.internal.impl.v10.type.TypeToRuleVisitor;
 import org.raml.yagi.framework.grammar.rule.ErrorNodeFactory;
 import org.raml.yagi.framework.grammar.rule.Rule;
 import org.raml.yagi.framework.nodes.Node;
 import org.raml.yagi.framework.nodes.SimpleTypeNode;
 import org.raml.yagi.framework.suggester.ParsingContext;
 import org.raml.yagi.framework.suggester.Suggestion;
-import org.raml.v2.internal.impl.commons.nodes.TypeDeclarationField;
-import org.raml.v2.internal.impl.commons.nodes.TypeDeclarationNode;
-import org.raml.v2.internal.impl.v10.nodes.LibraryLinkNode;
-import org.raml.v2.internal.impl.v10.type.TypeToRuleVisitor;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class DiscriminatorBasedRule extends Rule
 {

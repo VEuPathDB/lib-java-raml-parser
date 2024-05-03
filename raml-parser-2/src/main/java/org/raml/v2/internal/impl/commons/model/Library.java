@@ -15,9 +15,9 @@
  */
 package org.raml.v2.internal.impl.commons.model;
 
-import org.raml.yagi.framework.nodes.Node;
 import org.raml.v2.internal.impl.v10.nodes.LibraryLinkNode;
 import org.raml.v2.internal.impl.v10.nodes.LibraryNode;
+import org.raml.yagi.framework.nodes.Node;
 
 public class Library extends Annotable<LibraryNode>
 {

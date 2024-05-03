@@ -15,8 +15,6 @@
  */
 package org.raml.v2.internal.impl.v10.nodes.factory;
 
-import javax.annotation.Nonnull;
-
 import org.raml.v2.internal.impl.commons.nodes.TypeDeclarationNode;
 import org.raml.v2.internal.impl.v10.nodes.OverridableNativeTypeExpressionNode;
 import org.raml.v2.internal.impl.v10.type.TypeId;
@@ -24,6 +22,8 @@ import org.raml.yagi.framework.grammar.rule.NodeFactory;
 import org.raml.yagi.framework.nodes.KeyValueNodeImpl;
 import org.raml.yagi.framework.nodes.Node;
 import org.raml.yagi.framework.nodes.StringNodeImpl;
+
+import javax.annotation.Nonnull;
 
 public class DefaultMimeTypeDeclarationFactory implements NodeFactory
 {

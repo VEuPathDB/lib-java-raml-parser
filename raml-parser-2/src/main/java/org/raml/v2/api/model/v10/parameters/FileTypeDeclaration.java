@@ -15,9 +15,10 @@
  */
 package org.raml.v2.api.model.v10.parameters;
 
-import java.util.List;
 import org.raml.v2.api.model.v10.datamodel.TypeDeclaration;
 import org.raml.v2.api.model.v10.system.types.ContentType;
+
+import java.util.List;
 
 
 public interface FileTypeDeclaration extends TypeDeclaration

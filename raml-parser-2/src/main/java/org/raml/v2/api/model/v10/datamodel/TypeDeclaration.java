@@ -15,13 +15,13 @@
  */
 package org.raml.v2.api.model.v10.datamodel;
 
-import java.util.List;
-
 import org.raml.v2.api.model.common.ValidationResult;
 import org.raml.v2.api.model.v10.common.Annotable;
 import org.raml.v2.api.model.v10.declarations.AnnotationTarget;
-import org.raml.v2.api.model.v10.system.types.MarkdownString;
 import org.raml.v2.api.model.v10.system.types.AnnotableStringType;
+import org.raml.v2.api.model.v10.system.types.MarkdownString;
+
+import java.util.List;
 
 
 public interface TypeDeclaration extends Annotable

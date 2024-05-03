@@ -21,7 +21,6 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import javax.annotation.Nullable;
-import javax.xml.XMLConstants;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
@@ -49,151 +48,116 @@ import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 
-public class SchemaGenerator
-{
-    private static String DEFINITIONS = "/definitions/";
+public class SchemaGenerator {
+  private static String DEFINITIONS = "/definitions/";
 
-    private static LoadingCache<JsonSchemaExternalType, JsonSchema> jsonSchemaCache = CacheBuilder.newBuilder()
-                                                                                                  .maximumSize(Integer.parseInt(System.getProperty("yagi.json_cache_size", "200")))
-                                                                                                  .build(new CacheLoader<JsonSchemaExternalType, JsonSchema>()
-                                                                                                  {
+  private static final LoadingCache<JsonSchemaExternalType, JsonSchema> jsonSchemaCache = CacheBuilder.newBuilder()
+    .maximumSize(Integer.parseInt(System.getProperty("yagi.json_cache_size", "200")))
+    .build(new CacheLoader<>() {
+      @Override
+      public JsonSchema load(JsonSchemaExternalType jsonTypeDefinition) throws IOException,
+        ProcessingException {
+        return loadJsonSchema(jsonTypeDefinition);
+      }
+    });
 
-                                                                                                      @Override
-                                                                                                      public JsonSchema load(JsonSchemaExternalType jsonTypeDefinition) throws IOException,
-                                                                                                              ProcessingException
-                                                                                                      {
-                                                                                                          return loadJsonSchema(jsonTypeDefinition);
-                                                                                                      }
-                                                                                                  });
+  public static Schema generateXmlSchema(ResourceLoader resourceLoader, XmlSchemaExternalType xmlTypeDefinition) throws SAXException {
+    SchemaFactory factory = SchemaFactory.newInstance(XMLLocalConstants.XML_SCHEMA_VERSION);
+    factory.setResourceResolver(new XsdResourceResolver(resourceLoader, xmlTypeDefinition.getSchemaPath()));
+    String includedResourceUri = resolveResourceUriIfIncluded(xmlTypeDefinition);
+    return factory.newSchema(new StreamSource(new StringReader(xmlTypeDefinition.getSchemaValue()), includedResourceUri));
+  }
 
-    public static Schema generateXmlSchema(ResourceLoader resourceLoader, XmlSchemaExternalType xmlTypeDefinition) throws SAXException
-    {
-        SchemaFactory factory = SchemaFactory.newInstance(XMLLocalConstants.XML_SCHEMA_VERSION);
-        factory.setResourceResolver(new XsdResourceResolver(resourceLoader, xmlTypeDefinition.getSchemaPath()));
-        String includedResourceUri = resolveResourceUriIfIncluded(xmlTypeDefinition);
-        return factory.newSchema(new StreamSource(new StringReader(xmlTypeDefinition.getSchemaValue()), includedResourceUri));
+  private static JsonSchema loadJsonSchema(JsonSchemaExternalType jsonTypeDefinition) throws IOException, ProcessingException {
+    final JsonSchema result;
+    String includedResourceUri = resolveResourceUriIfIncluded(jsonTypeDefinition);
+
+    JsonNode jsonSchema = JsonLoader.fromString(jsonTypeDefinition.getSchemaValue());
+    JsonSchemaFactory factory = JsonSchemaFactory.byDefault();
+
+    if (jsonTypeDefinition.getInternalFragment() != null) {
+      if (includedResourceUri != null) {
+        result = factory.getJsonSchema(includedResourceUri + "#" + DEFINITIONS + jsonTypeDefinition.getInternalFragment());
+      } else {
+        result = factory.getJsonSchema(jsonSchema, DEFINITIONS + jsonTypeDefinition.getInternalFragment());
+      }
+    } else {
+      if (includedResourceUri != null) {
+        result = factory.getJsonSchema(includedResourceUri);
+      } else {
+        result = factory.getJsonSchema(jsonSchema);
+      }
+    }
+    return result;
+  }
+
+  public static JsonSchema generateJsonSchema(JsonSchemaExternalType jsonTypeDefinition) throws IOException, ProcessingException {
+    try {
+      return jsonSchemaCache.get(jsonTypeDefinition);
+    } catch (ExecutionException e) {
+      if (e.getCause() instanceof JsonParseException)
+        throw (JsonParseException) e.getCause();
+      else if (e.getCause() instanceof IOException) {
+        throw (IOException) e.getCause();
+      } else
+        throw new ProcessingException(e.getMessage(), e.getCause());
+    }
+  }
+
+  @Nullable
+  private static String resolveResourceUriIfIncluded(ResolvedType typeDefinition) {
+    // Getting the type holding the schema
+    TypeExpressionNode typeExpressionNode = typeDefinition.getTypeExpressionNode();
+
+    if (typeExpressionNode instanceof ExternalSchemaTypeExpressionNode) {
+      final ExternalSchemaTypeExpressionNode schema = (ExternalSchemaTypeExpressionNode) typeExpressionNode;
+
+      return getIncludedResourceUri(schema);
+    } else {
+      // Inside the type declaration, we find the node containing the schema itself
+      List<ExternalSchemaTypeExpressionNode> schemas = typeExpressionNode.findDescendantsWith(ExternalSchemaTypeExpressionNode.class);
+      if (!schemas.isEmpty()) {
+        return getIncludedResourceUri(schemas.get(0));
+      } else {
+        // If the array is empty, then it must be a reference to a previously defined type
+        List<NamedTypeExpressionNode> refNode = typeExpressionNode.findDescendantsWith(NamedTypeExpressionNode.class);
+
+        if (!refNode.isEmpty()) {
+          // If refNodes is not empty, then we obtain that type
+          typeExpressionNode = refNode.get(0).resolveReference();
+          if (typeExpressionNode != null) {
+            schemas = typeExpressionNode.findDescendantsWith(ExternalSchemaTypeExpressionNode.class);
+            if (!schemas.isEmpty()) {
+              return getIncludedResourceUri(schemas.get(0));
+            }
+          }
+        }
+      }
     }
 
-    private static JsonSchema loadJsonSchema(JsonSchemaExternalType jsonTypeDefinition) throws IOException, ProcessingException
-    {
-        final JsonSchema result;
-        String includedResourceUri = resolveResourceUriIfIncluded(jsonTypeDefinition);
+    return null;
+  }
 
-        JsonNode jsonSchema = JsonLoader.fromString(jsonTypeDefinition.getSchemaValue());
-        JsonSchemaFactory factory = JsonSchemaFactory.byDefault();
+  private static String getIncludedResourceUri(ExternalSchemaTypeExpressionNode schemaNode) {
+    final String includedResourceUri = schemaNode.getStartPosition().getIncludedResourceUri();
 
-        if (jsonTypeDefinition.getInternalFragment() != null)
-        {
-            if (includedResourceUri != null)
-            {
-                result = factory.getJsonSchema(includedResourceUri + "#" + DEFINITIONS + jsonTypeDefinition.getInternalFragment());
-            }
-            else
-            {
-                result = factory.getJsonSchema(jsonSchema, DEFINITIONS + jsonTypeDefinition.getInternalFragment());
-            }
-        }
-        else
-        {
-            if (includedResourceUri != null)
-            {
-                result = factory.getJsonSchema(includedResourceUri);
-            }
-            else
-            {
-                result = factory.getJsonSchema(jsonSchema);
-            }
-        }
-        return result;
+    if (includedResourceUri == null) {
+      final TypeDeclarationNode parentTypeDeclaration = NodeUtils.getAncestor(schemaNode, TypeDeclarationNode.class);
+      if (parentTypeDeclaration != null)
+        return parentTypeDeclaration.getStartPosition().getIncludedResourceUri();
     }
 
-    public static JsonSchema generateJsonSchema(JsonSchemaExternalType jsonTypeDefinition) throws IOException, ProcessingException
-    {
-        try
-        {
-            return jsonSchemaCache.get(jsonTypeDefinition);
-        }
-        catch (ExecutionException e)
-        {
-            if (e.getCause() instanceof JsonParseException)
-                throw (JsonParseException) e.getCause();
-            else if (e.getCause() instanceof IOException)
-            {
-                throw (IOException) e.getCause();
-            }
-            else
-                throw new ProcessingException(e.getMessage(), e.getCause());
-        }
-    }
-
-    @Nullable
-    private static String resolveResourceUriIfIncluded(ResolvedType typeDefinition)
-    {
-        // Getting the type holding the schema
-        TypeExpressionNode typeExpressionNode = typeDefinition.getTypeExpressionNode();
-
-        if (typeExpressionNode instanceof ExternalSchemaTypeExpressionNode)
-        {
-            final ExternalSchemaTypeExpressionNode schema = (ExternalSchemaTypeExpressionNode) typeExpressionNode;
-
-            return getIncludedResourceUri(schema);
-        }
-        else
-        {
-            // Inside the type declaration, we find the node containing the schema itself
-            List<ExternalSchemaTypeExpressionNode> schemas = typeExpressionNode.findDescendantsWith(ExternalSchemaTypeExpressionNode.class);
-            if (schemas.size() > 0)
-            {
-                return getIncludedResourceUri(schemas.get(0));
-            }
-            else
-            {
-                // If the array is empty, then it must be a reference to a previously defined type
-                List<NamedTypeExpressionNode> refNode = typeExpressionNode.findDescendantsWith(NamedTypeExpressionNode.class);
-
-                if (refNode.size() > 0)
-                {
-                    // If refNodes is not empty, then we obtain that type
-                    typeExpressionNode = refNode.get(0).resolveReference();
-                    if (typeExpressionNode != null)
-                    {
-                        schemas = typeExpressionNode.findDescendantsWith(ExternalSchemaTypeExpressionNode.class);
-                        if (schemas.size() > 0)
-                        {
-                            return getIncludedResourceUri(schemas.get(0));
-                        }
-                    }
-                }
-            }
-        }
-
-        return null;
-    }
-
-    private static String getIncludedResourceUri(ExternalSchemaTypeExpressionNode schemaNode)
-    {
-        final String includedResourceUri = schemaNode.getStartPosition().getIncludedResourceUri();
-
-        if (includedResourceUri == null)
-        {
-            final TypeDeclarationNode parentTypeDeclaration = NodeUtils.getAncestor(schemaNode, TypeDeclarationNode.class);
-            if (parentTypeDeclaration != null)
-                return parentTypeDeclaration.getStartPosition().getIncludedResourceUri();
-        }
-
-        return includedResourceUri;
-    }
+    return includedResourceUri;
+  }
 
 
-    public static boolean isJsonSchema(String schema)
-    {
-        return schema.trim().startsWith("{");
-    }
+  public static boolean isJsonSchema(String schema) {
+    return schema.trim().startsWith("{");
+  }
 
 
-    public static boolean isXmlSchema(String schema)
-    {
-        return schema.trim().startsWith("<");
-    }
+  public static boolean isXmlSchema(String schema) {
+    return schema.trim().startsWith("<");
+  }
 
 }

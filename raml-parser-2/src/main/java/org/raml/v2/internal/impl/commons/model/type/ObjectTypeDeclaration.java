@@ -15,11 +15,11 @@
  */
 package org.raml.v2.internal.impl.commons.model.type;
 
-import org.raml.yagi.framework.nodes.KeyValueNode;
 import org.raml.v2.internal.impl.commons.model.factory.TypeDeclarationModelFactory;
 import org.raml.v2.internal.impl.v10.type.ObjectResolvedType;
 import org.raml.v2.internal.impl.v10.type.PropertyFacets;
 import org.raml.v2.internal.utils.ValueUtils;
+import org.raml.yagi.framework.nodes.KeyValueNode;
 
 import java.util.ArrayList;
 import java.util.List;

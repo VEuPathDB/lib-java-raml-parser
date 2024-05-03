@@ -26,67 +26,51 @@ import org.raml.yagi.framework.util.NodeUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RamlNodeUtils
-{
-    public static boolean isErrorResult(Node node)
-    {
-        if (NodeUtils.isErrorResult(node))
-        {
-            return true;
+public class RamlNodeUtils {
+  public static boolean isErrorResult(Node node) {
+    if (NodeUtils.isErrorResult(node)) {
+      return true;
+    } else if (node != null) {
+      final List<LibraryLinkNode> descendantsWith = node.findDescendantsWith(LibraryLinkNode.class);
+      for (LibraryLinkNode libraryLinkNode : descendantsWith) {
+        if (isErrorResult(libraryLinkNode.getRefNode())) {
+          return true;
         }
-        else if (node != null)
-        {
-            final List<LibraryLinkNode> descendantsWith = node.findDescendantsWith(LibraryLinkNode.class);
-            for (LibraryLinkNode libraryLinkNode : descendantsWith)
-            {
-                if (isErrorResult(libraryLinkNode.getRefNode()))
-                {
-                    return true;
-                }
-            }
-        }
-        return false;
+      }
     }
+    return false;
+  }
 
 
-    public static List<ErrorNode> getErrors(Node node)
-    {
-        List<ErrorNode> result = new ArrayList<>();
-        if (node != null)
-        {
-            if (node instanceof ErrorNode)
-            {
-                result.add((ErrorNode) node);
-            }
+  public static List<ErrorNode> getErrors(Node node) {
+    List<ErrorNode> result = new ArrayList<>();
+    if (node != null) {
+      if (node instanceof ErrorNode) {
+        result.add((ErrorNode) node);
+      }
 
-            result.addAll(node.findDescendantsWith(ErrorNode.class));
+      result.addAll(node.findDescendantsWith(ErrorNode.class));
 
 
-            final List<LibraryLinkNode> descendantsWith = node.findDescendantsWith(LibraryLinkNode.class);
-            for (LibraryLinkNode libraryLinkNode : descendantsWith)
-            {
-                result.addAll(getErrors(libraryLinkNode.getRefNode()));
-            }
-        }
-        return result;
+      final List<LibraryLinkNode> descendantsWith = node.findDescendantsWith(LibraryLinkNode.class);
+      for (LibraryLinkNode libraryLinkNode : descendantsWith) {
+        result.addAll(getErrors(libraryLinkNode.getRefNode()));
+      }
     }
+    return result;
+  }
 
-    public static RamlVersion getVersion(Node node)
-    {
-        while (true)
-        {
-            for (NodeAnnotation annotation : node.annotations())
-            {
-                if (annotation instanceof RamlVersionAnnotation)
-                {
-                    return ((RamlVersionAnnotation) annotation).getVersion();
-                }
-            }
-            node = node.getParent();
-            if (node == null)
-            {
-                throw new RuntimeException("Raml Version not specified.");
-            }
+  public static RamlVersion getVersion(Node node) {
+    while (true) {
+      for (NodeAnnotation annotation : node.annotations()) {
+        if (annotation instanceof RamlVersionAnnotation) {
+          return ((RamlVersionAnnotation) annotation).getVersion();
         }
+      }
+      node = node.getParent();
+      if (node == null) {
+        throw new RuntimeException("Raml Version not specified.");
+      }
     }
+  }
 }

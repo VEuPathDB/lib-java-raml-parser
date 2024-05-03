@@ -15,11 +15,10 @@
  */
 package org.raml.v2.internal.impl.commons.rule;
 
+import org.raml.v2.internal.impl.commons.nodes.ParametrizedReferenceNode;
 import org.raml.v2.internal.impl.commons.suggester.ReferenceSuggester;
 import org.raml.yagi.framework.grammar.rule.ObjectRule;
-
 import org.raml.yagi.framework.nodes.Node;
-import org.raml.v2.internal.impl.commons.nodes.ParametrizedReferenceNode;
 import org.raml.yagi.framework.suggester.ParsingContext;
 import org.raml.yagi.framework.suggester.Suggestion;
 

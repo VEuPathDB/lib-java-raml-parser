@@ -15,22 +15,6 @@
  */
 package org.raml.v2.internal.impl.v10.type;
 
-import static java.math.BigDecimal.ONE;
-import static java.math.BigDecimal.ROUND_CEILING;
-import static java.math.BigDecimal.ROUND_DOWN;
-import static java.math.BigDecimal.ZERO;
-import static org.raml.v2.internal.impl.v10.grammar.Raml10Grammar.FORMAT_KEY_NAME;
-import static org.raml.v2.internal.impl.v10.grammar.Raml10Grammar.MAXIMUM_KEY_NAME;
-import static org.raml.v2.internal.impl.v10.grammar.Raml10Grammar.MINIMUM_KEY_NAME;
-import static org.raml.v2.internal.impl.v10.grammar.Raml10Grammar.MULTIPLE_OF_KEY_NAME;
-
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import org.raml.v2.internal.impl.commons.nodes.TypeDeclarationNode;
 import org.raml.v2.internal.impl.commons.nodes.TypeExpressionNode;
 import org.raml.v2.internal.impl.commons.rule.RamlErrorNodeFactory;
@@ -43,8 +27,16 @@ import org.raml.yagi.framework.nodes.ArrayNode;
 import org.raml.yagi.framework.nodes.ErrorNode;
 import org.raml.yagi.framework.nodes.Node;
 import org.raml.yagi.framework.nodes.SimpleTypeNode;
-import org.raml.yagi.framework.nodes.snakeyaml.SYArrayNode;
 import org.raml.yagi.framework.util.NodeSelector;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
+import static java.math.BigDecimal.*;
+import static org.raml.v2.internal.impl.v10.grammar.Raml10Grammar.*;
 
 public class NumberResolvedType extends XmlFacetsCapableType
 {

@@ -15,9 +15,9 @@
  */
 package org.raml.v2.internal.impl.commons.model;
 
-import org.raml.yagi.framework.nodes.Node;
 import org.raml.v2.internal.impl.commons.nodes.MethodNode;
 import org.raml.v2.internal.impl.commons.nodes.ResourceNode;
+import org.raml.yagi.framework.nodes.Node;
 
 public class Method extends Annotable<MethodNode>
 {

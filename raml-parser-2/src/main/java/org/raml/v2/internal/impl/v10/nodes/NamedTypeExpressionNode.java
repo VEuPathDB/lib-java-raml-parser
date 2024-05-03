@@ -17,11 +17,11 @@ package org.raml.v2.internal.impl.v10.nodes;
 
 import org.raml.v2.internal.impl.commons.nodes.AbstractReferenceNode;
 import org.raml.v2.internal.impl.commons.nodes.RamlDocumentNode;
-import org.raml.yagi.framework.nodes.Node;
 import org.raml.v2.internal.impl.commons.nodes.TypeDeclarationNode;
 import org.raml.v2.internal.impl.commons.nodes.TypeExpressionNode;
-import org.raml.v2.internal.impl.v10.grammar.Raml10Grammar;
 import org.raml.v2.internal.impl.commons.type.ResolvedType;
+import org.raml.v2.internal.impl.v10.grammar.Raml10Grammar;
+import org.raml.yagi.framework.nodes.Node;
 import org.raml.yagi.framework.nodes.SimpleTypeNode;
 import org.raml.yagi.framework.util.NodeSelector;
 

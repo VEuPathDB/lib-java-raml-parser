@@ -16,11 +16,11 @@
 package org.raml.v2.internal.impl.v10.nodes.factory;
 
 
-import javax.annotation.Nonnull;
-
 import org.raml.yagi.framework.grammar.rule.NodeFactory;
 import org.raml.yagi.framework.nodes.Node;
 import org.raml.yagi.framework.nodes.ObjectNodeImpl;
+
+import javax.annotation.Nonnull;
 
 /**
  * This factory is used for nullable object nodes that contain default values,

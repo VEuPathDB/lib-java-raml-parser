@@ -15,8 +15,8 @@
  */
 package org.raml.v2.internal.impl.commons.model;
 
-import org.raml.yagi.framework.nodes.ReferenceNode;
 import org.raml.v2.internal.impl.commons.nodes.TraitNode;
+import org.raml.yagi.framework.nodes.ReferenceNode;
 
 public class TraitRef extends Reference
 {

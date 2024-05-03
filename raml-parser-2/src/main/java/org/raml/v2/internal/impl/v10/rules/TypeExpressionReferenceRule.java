@@ -16,8 +16,9 @@
 package org.raml.v2.internal.impl.v10.rules;
 
 import org.apache.commons.lang.StringUtils;
-
+import org.raml.v2.internal.impl.commons.nodes.TypeExpressionNode;
 import org.raml.v2.internal.impl.commons.suggester.ReferenceSuggester;
+import org.raml.v2.internal.impl.v10.type.TypeId;
 import org.raml.yagi.framework.grammar.rule.Rule;
 import org.raml.yagi.framework.nodes.Node;
 import org.raml.yagi.framework.nodes.SimpleTypeNode;
@@ -25,8 +26,6 @@ import org.raml.yagi.framework.nodes.StringNode;
 import org.raml.yagi.framework.suggester.DefaultSuggestion;
 import org.raml.yagi.framework.suggester.ParsingContext;
 import org.raml.yagi.framework.suggester.Suggestion;
-import org.raml.v2.internal.impl.commons.nodes.TypeExpressionNode;
-import org.raml.v2.internal.impl.v10.type.TypeId;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;

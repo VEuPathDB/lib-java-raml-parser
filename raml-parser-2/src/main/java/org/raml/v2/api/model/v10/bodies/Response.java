@@ -15,11 +15,12 @@
  */
 package org.raml.v2.api.model.v10.bodies;
 
-import java.util.List;
 import org.raml.v2.api.model.v10.common.Annotable;
 import org.raml.v2.api.model.v10.datamodel.TypeDeclaration;
 import org.raml.v2.api.model.v10.system.types.MarkdownString;
 import org.raml.v2.api.model.v10.system.types.StatusCodeString;
+
+import java.util.List;
 
 
 public interface Response extends Annotable

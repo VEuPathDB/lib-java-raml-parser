@@ -15,11 +15,6 @@
  */
 package org.raml.v2.internal.impl.v10.type;
 
-import static java.util.Collections.singletonList;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import org.raml.v2.internal.impl.commons.nodes.TypeDeclarationNode;
 import org.raml.v2.internal.impl.commons.nodes.TypeExpressionNode;
 import org.raml.v2.internal.impl.commons.rule.RamlErrorNodeFactory;
@@ -29,6 +24,11 @@ import org.raml.v2.internal.impl.commons.type.ResolvedType;
 import org.raml.v2.internal.impl.commons.type.SchemaBasedResolvedType;
 import org.raml.yagi.framework.nodes.ErrorNode;
 import org.raml.yagi.framework.nodes.Node;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static java.util.Collections.singletonList;
 
 public class UnionResolvedType extends BaseType
 {

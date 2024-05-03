@@ -15,8 +15,8 @@
  */
 package org.raml.v2.internal.impl.commons.model;
 
-import org.raml.yagi.framework.nodes.Node;
 import org.raml.v2.internal.impl.commons.nodes.SecuritySchemeNode;
+import org.raml.yagi.framework.nodes.Node;
 
 public class SecurityScheme extends Annotable<SecuritySchemeNode>
 {

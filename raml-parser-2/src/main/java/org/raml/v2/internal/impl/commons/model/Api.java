@@ -15,14 +15,14 @@
  */
 package org.raml.v2.internal.impl.commons.model;
 
-import static org.raml.v2.internal.utils.RamlNodeUtils.getVersion;
+import org.raml.v2.internal.impl.commons.nodes.RamlDocumentNode;
+import org.raml.v2.internal.impl.commons.nodes.ResourceNode;
+import org.raml.yagi.framework.nodes.Node;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.raml.v2.internal.impl.commons.nodes.RamlDocumentNode;
-import org.raml.v2.internal.impl.commons.nodes.ResourceNode;
-import org.raml.yagi.framework.nodes.Node;
+import static org.raml.v2.internal.utils.RamlNodeUtils.getVersion;
 
 public class Api extends Annotable<RamlDocumentNode>
 {

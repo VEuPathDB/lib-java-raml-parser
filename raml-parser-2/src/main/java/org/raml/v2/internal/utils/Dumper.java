@@ -15,7 +15,6 @@
  */
 package org.raml.v2.internal.utils;
 
-import org.raml.v2.internal.utils.RamlTreeNodeDumper;
 import org.raml.yagi.framework.nodes.Node;
 import org.raml.yagi.framework.util.NodeAppender;
 

@@ -15,9 +15,9 @@
  */
 package org.raml.v2.api.model.v10.common;
 
-import java.util.List;
-
 import org.raml.v2.api.model.v10.declarations.AnnotationRef;
+
+import java.util.List;
 
 
 public interface Annotable

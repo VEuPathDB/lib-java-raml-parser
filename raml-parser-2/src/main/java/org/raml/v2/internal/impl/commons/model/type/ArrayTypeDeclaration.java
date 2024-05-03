@@ -15,9 +15,9 @@
  */
 package org.raml.v2.internal.impl.commons.model.type;
 
-import org.raml.yagi.framework.nodes.KeyValueNode;
 import org.raml.v2.internal.impl.commons.model.factory.TypeDeclarationModelFactory;
 import org.raml.v2.internal.impl.v10.type.ArrayResolvedType;
+import org.raml.yagi.framework.nodes.KeyValueNode;
 
 /**
  * Binding implementation of {@link org.raml.v2.api.model.v10.datamodel.ArrayTypeDeclaration}

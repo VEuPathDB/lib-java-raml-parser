@@ -15,17 +15,6 @@
  */
 package org.raml.v2.internal.impl.v10.type;
 
-import static org.raml.v2.internal.impl.v10.grammar.Raml10Grammar.FILE_TYPES_KEY_NAME;
-import static org.raml.v2.internal.impl.v10.grammar.Raml10Grammar.FORMAT_KEY_NAME;
-import static org.raml.v2.internal.impl.v10.grammar.Raml10Grammar.MAX_LENGTH_KEY_NAME;
-import static org.raml.v2.internal.impl.v10.grammar.Raml10Grammar.MIN_LENGTH_KEY_NAME;
-import static org.raml.yagi.framework.util.NodeSelector.selectIntValue;
-import static org.raml.yagi.framework.util.NodeSelector.selectStringCollection;
-
-import java.util.List;
-
-import javax.annotation.Nullable;
-
 import org.raml.v2.internal.impl.commons.nodes.TypeDeclarationNode;
 import org.raml.v2.internal.impl.commons.nodes.TypeExpressionNode;
 import org.raml.v2.internal.impl.commons.type.ResolvedCustomFacets;
@@ -33,6 +22,13 @@ import org.raml.v2.internal.impl.commons.type.ResolvedType;
 import org.raml.v2.internal.impl.v10.grammar.Raml10Grammar;
 import org.raml.v2.internal.impl.v10.rules.TypesUtils;
 import org.raml.yagi.framework.grammar.rule.AnyOfRule;
+
+import javax.annotation.Nullable;
+import java.util.List;
+
+import static org.raml.v2.internal.impl.v10.grammar.Raml10Grammar.*;
+import static org.raml.yagi.framework.util.NodeSelector.selectIntValue;
+import static org.raml.yagi.framework.util.NodeSelector.selectStringCollection;
 
 public class FileResolvedType extends XmlFacetsCapableType
 {
