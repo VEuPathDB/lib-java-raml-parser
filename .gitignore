@@ -1,4 +1,7 @@
 target/
+yagi/build/
+raml-parser-2/build/
+
 .idea/
 *.iml
 private/
